@@ -1,10 +1,21 @@
 import React from 'react';
-import './post-add-form.css'
+import styled from 'styled-components';
+
+const BottomPanel = styled.form`
+    display: flex;
+    margin: 20px 0;
+
+    .new-post-label {
+        width: auto;
+        flex-grow: 1;
+        margin-right: 3px;
+    }
+`;
 
 const PostAddForm = () => {
     return (
         <section>
-            <form className="bottom-panel d-flex">
+            <BottomPanel>
                 <input
                     type="text"
                     className="form-control new-post-label"
@@ -16,7 +27,7 @@ const PostAddForm = () => {
                 >
                     Add Post
                 </button>
-            </form>
+            </BottomPanel>
         </section>
     )
 };
