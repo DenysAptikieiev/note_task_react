@@ -1,0 +1,52 @@
+.app-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.block-profile {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 140px;
+}
+
+.app-header .avatar-block {
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.app-header .logo {
+    width: 60px;
+    height: 60px;
+}
+
+.info-header-post {
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+    padding-right: 20px;   
+}
+
+.info-header-post span {
+    color: #000000;
+}
+
+.app-header h1 {
+    /* width: 150px;
+    height: 150px; */
+    font-size: 26px;
+  }
+  
+  .app-header h4 {
+    font-size: 16px;
+    color: grey;
+  }
