@@ -19,19 +19,21 @@ const ListGroupItem = styled.li`
 `;
 
 export default class PostList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: this.props,
-        }
-    }
     render() {
-        const {posts} = this.state.data;
+        const { posts, onDelete, onToggleImportant, onToggleLiked } = this.props;
+        
         const elements = posts.map(item => {
-            const {id, label, important, like} = item;
-            return(
+            const { id, label, important, like } = item;
+            return (
                 <ListGroupItem key={id}>
-                    <PostListItem label={label} important={important} like={like}/>
+                    <PostListItem
+                        onDelete={() => onDelete(id)}
+                        label={label}
+                        important={important}
+                        like={like}
+                        onToggleImportant={() => onToggleImportant(id)}
+                        onToggleLiked={() => onToggleLiked(id)}
+                    />
                 </ListGroupItem>
             )
         })

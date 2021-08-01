@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const BlockBtn = styled.div`
     display: flex;
     justify-content: space-around;
+    
+    .active {
+            border-top: 1px solid;
+            color: #000;
+            font-weight: 500;
+        }
+    }
     button {
         position: relative;
         top: -1.2px;
@@ -34,15 +41,35 @@ const BlockBtn = styled.div`
     }
 `;
 
-const PostStatusFilter = () => {
-    return (
-        <BlockBtn>
-            <button><i><img src="./icons/all.svg" alt="all publication"/></i> ALL</button>
-            
-            <button><i><img src="./icons/like.svg" alt="like publication"/></i> LIKE</button>
-            
-        </BlockBtn>
-    )
+export default class PostStatusFilter extends Component {
+    constructor(props) {
+        super(props);
+        this.buttons = [
+            { name: 'all', label: 'ALL' },
+            { name: 'like', label: 'LIKE' },
+            { name: 'important', label: 'IMPORTANT' },
+        ]
+    }
+    render() {
+        const buttons = this.buttons.map(item => {
+            const {filter, onFilterSelect} = this.props;
+            const active = filter === item.name ? 'active' : '';
+            return (
+                <button
+                    key={item.name}
+                    onClick={() => onFilterSelect(item.name)}
+                    className={active}
+                >
+                    <i><img src={`./icons/${item.name}.svg`} alt={item.label} /></i>
+                    {item.label}
+                </button>
+            )
+        })
+        return (
+            <BlockBtn>
+                {buttons}
+            </BlockBtn>
+        )
+    }
 };
 
-export default PostStatusFilter;

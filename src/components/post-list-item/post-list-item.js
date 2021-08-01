@@ -54,41 +54,26 @@ const AppListItemLabel = styled.span`
 `;
 
 export default class PostListItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            important: false,
-            like: false,
-        }
-        this.onImportant = this.onImportant.bind(this);
-        this.onLike = this.onLike.bind(this);
-    }
-    onImportant() {
-        this.setState({ important: !this.state.important })
-    };
-    onLike() {
-        this.setState({ like: !this.state.like })
-    };
-
     render() {
-        const { label } = this.props;
-        const { important, like } = this.state;
+        const { label, onDelete, onToggleImportant, onToggleLiked } = this.props;
+        const { important, like } = this.props;
         return (
-            <AppListItem onDoubleClick={this.onLike} important={important} like={like}>
+            <AppListItem onDoubleClick={onToggleLiked}  like={like}>
 
-                <AppListItemLabel>
-                    <i onClick={this.onLike} className="fa fa-heart"></i>
+                <AppListItemLabel important={important}>
+                    <i onClick={onToggleLiked} className="fa fa-heart"></i>
                     {label}
                 </AppListItemLabel>
-                <BtnBlock>
+                <BtnBlock important={important}>
                     <button
-                        onClick={this.onImportant}
+                        onClick={onToggleImportant}
                         type="button"
                         className="btn-star btn-sm"
                     >
                         <i className="fa fa-star"></i>
                     </button>
                     <button
+                        onClick={onDelete}
                         type="button"
                         className="btn-trash btn-sm"
                     >

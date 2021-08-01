@@ -36,14 +36,15 @@ const InfoHeaderPost = styled.div`
     }
 `;
 
-const AppHeader = () => {
+const AppHeader = ({like, notes, importanted}) => {
     return (
         <AppHearderSection>
             <img className="logo" src="logo_note.png" alt="logo" />
             <BlockProfile>
                 <InfoHeaderPost>
-                    <h4 className="notes"><span>20</span> notes</h4>
-                    <h4 className="likes"><span>3</span> likes</h4>
+                    <h4 className="notes"><span>{notes}</span> notes</h4>
+                    <h4 className="likes"><span>{like}</span> likes</h4>
+                    <h4 className="likes"><span>{importanted}</span> importanted</h4>
                 </InfoHeaderPost>
             </BlockProfile>
         </AppHearderSection>
